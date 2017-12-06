@@ -8,12 +8,21 @@
 
 #include <fstream>
 
-void newGame()
+/******************************************************************************
+ * creates a newGame and asks the user to play again once the game is over
+******************************************************************************/
+int newGame()
 {
   Game *game = new Game();
   delete game;
+  int choice = menu("\nWould you like to play again?\n1. Yes\n2. No\n", 2);
+  return choice;
 }
 
+/******************************************************************************
+ * repeats the main story to the user starting a new game so long as the user
+ * chooses to continue playing
+******************************************************************************/
 int main()
 {
   string welcome = "\nWelcome! You are Stuck.\nWhile flitting among the"
@@ -29,7 +38,10 @@ int main()
                    " around\n2. Quit\n";
   while(menu(welcome, 2) != 2)
   {
-    newGame();
+    if(newGame() == 2)
+    {
+      break;
+    }
   }
   return 0;
 }

@@ -1,61 +1,61 @@
 /******************************************************************************
- * Author: Sean Foster                                               <item.cpp>
+ * Author: Sean Foster                                            <monster.cpp>
  * Date: 11/23/2017
- * Description: Item class definition
+ * Description: Monster class declaration
 ******************************************************************************/
-#include "item.hpp"
+#include "monster.hpp"
 
 /******************************************************************************
- * Item constructor sets up a blank icon
+ * Monster constructor sets a blank icon
 ******************************************************************************/
-Item::Item()
+Monster::Monster()
 {
   setName("");
   setIcon("");
 }
+
 /******************************************************************************
- * Item constructor sets up an item with passed paramters
+ * creates Monster with a specified name and icon
 ******************************************************************************/
-Item::Item(std::string name, std::string icon)
+Monster::Monster(std::string name, std::string icon)
 {
   setName(name);
   setIcon(icon);
 }
-
-Item::~Item()
+Monster::~Monster()
 {
 
 }
 
 /******************************************************************************
- * sets the icon string(path)
+ * sets the monster icon(path)
 ******************************************************************************/
-void Item::setIcon(std::string icon)
+void Monster::setIcon(std::string icon)
 {
   this->icon = icon;
 }
 
 /******************************************************************************
- * sets the icon name
+ * sets the monster's name
 ******************************************************************************/
-void Item::setName(std::string name)
+void Monster::setName(std::string name)
 {
   this->name = name;
 
 }
 
 /******************************************************************************
- * returns icon name
+ * returns the monster's name
 ******************************************************************************/
-std::string Item::getName()
+std::string Monster::getName()
 {
   return this->name;
 }
 
 /******************************************************************************
- * creates an ifstream based on the icon(path) and calls printIcon
+ * creates an ifstream to open the icon(path) and print it if exists
 ******************************************************************************/
-void Item::loadIcon()
+void Monster::loadIcon()
 {
   std::ifstream ifs;
   ifs.open(icon.c_str());
@@ -71,10 +71,9 @@ void Item::loadIcon()
 }
 
 /******************************************************************************
- * opens up the plaintext file refereenced by icon(path) and prints it line by
- * line to the terminal.
+ * prints the ifstream line by line
 ******************************************************************************/
-void Item::printIcon(std::ifstream &ifs)
+void Monster::printIcon(std::ifstream &ifs)
 {
   bool keepReading = true;
   while(keepReading)
